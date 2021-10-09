@@ -1,3 +1,3 @@
-import * as wasm from "hello-wasm-pack";
+import * as wasm from "wasm-calculator"
 
-wasm.greet();
+wasm.greet("Abdulqudduus")
