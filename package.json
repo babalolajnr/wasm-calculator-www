@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "wasm-calculator": "file:../pkg",
     "watch": "^1.0.2"
   },
