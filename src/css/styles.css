@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
-.quicksand{
-    font-family: 'Quicksand', sans-serif;
+body {
+    background-image: url('../../dist/img/pexels-karolina-grabowska-4194857.jpg');
 }
 
-.btn{
-    @apply rounded-full bg-gray-500 flex justify-center items-center w-12 h-12
+.slabo {
+    font-family: 'Slabo 27px', serif;
+}
+
+.btn {
+    @apply rounded-full hover:bg-gray-200 flex font-bold justify-center items-center w-12 h-12
 }
