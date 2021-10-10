@@ -2,13 +2,15 @@
   "name": "create-wasm-app",
   "version": "0.1.0",
   "description": "create an app to consume rust-generated wasm packages",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
     "create-wasm-app": ".bin/create-wasm-app.js"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build:css": "postcss src/css/styles.css -o dist/css/styles.css",
+    "watch": "watch \"npm run build:css\" ./src"
   },
   "repository": {
     "type": "git",
@@ -27,13 +29,17 @@
   },
   "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
   "dependencies": {
-    "wasm-calculator": "file:../pkg"
+    "wasm-calculator": "file:../pkg",
+    "watch": "^1.0.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.3.7",
+    "copy-webpack-plugin": "^5.0.0",
     "hello-wasm-pack": "^0.1.0",
+    "postcss": "^8.3.9",
+    "tailwindcss": "^2.2.16",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5",
-    "copy-webpack-plugin": "^5.0.0"
+    "webpack-dev-server": "^3.1.5"
   }
 }

@@ -1,3 +1,5 @@
 import * as wasm from "wasm-calculator"
 
-wasm.greet("Abdulqudduus")
+// const name = prompt("What is your name")
+
+// wasm.greet(name)
