@@ -21,77 +21,57 @@ const buttonPercent = document.getElementById("percent")
 const buttonDivide = document.getElementById("divide")
 const buttonTimes = document.getElementById("times")
 const buttonEqual = document.getElementById("equal")
+const result = document.getElementById("result")
+const operand1 = document.getElementById("operand1")
+const operand2 = document.getElementById("operand2")
+const operator = document.getElementById("operator")
 
-const operators = [buttonPlus, buttonMinus, buttonClear, buttonPlusOrMinus, buttonPercent, buttonDivide, buttonTimes, buttonEqual]
+const operators = [buttonPlus, buttonMinus, buttonPlusOrMinus, buttonPercent, buttonDivide, buttonTimes]
 const characters = [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, button00, buttonPoint]
 
-button1.addEventListener("click", e => {
-    buildOperand("1")
+characters.map((button) => {
+    button.addEventListener("click", e => {
+        buildOperand(button.innerText)
+    })
 })
 
-button2.addEventListener("click", e => {
-    buildOperand("2")
-})
-
-button3.addEventListener("click", e => {
-    buildOperand("3")
-})
-
-button4.addEventListener("click", e => {
-    buildOperand("4")
-})
-
-button5.addEventListener("click", e => {
-    buildOperand("5")
-})
-
-button6.addEventListener("click", e => {
-    buildOperand("6")
-})
-
-button7.addEventListener("click", e => {
-    buildOperand("7")
-})
-
-button8.addEventListener("click", e => {
-    buildOperand("8")
-})
-button9.addEventListener("click", e => {
-    buildOperand("9")
-})
-button0.addEventListener("click", e => {
-    buildOperand("0")
-})
-button00.addEventListener("click", e => {
-    buildOperand("00")
-})
-
-buttonPoint.addEventListener("click", e => {
-    buildOperand(".")
-})
-
-let operator = ""
-
-plus.addEventListener("click", e => {
-    // buildOperand("")
-    operator = "+"
-    console.log(operator)
-})
-
-const result = document.getElementById("result")
-
-
-let operand1 = ""
-let operand2 = ""
-
-const buildOperand = (char) => {
-    if (operator = "") operand1 += char
-    else operand2 += char
-
-    display()
-    console.log(operand1)
+const operands = {
+    operand1: "",
+    operand2: ""
 }
 
-const display = () => {
-    result.innerHTML = operand1
+let selectedOperator = ""
+operators.map((operator) => {
+    operator.addEventListener("click", e => {
+        selectedOperator = operator.innerText
+        highlightDisplay(selectedOperator)
+    })
+})
+
+// build the operands
+const buildOperand = (char) => {
+    if (selectedOperator.length < 1) {
+        operands.operand1 += char
+        highlightDisplay("")
+        operand1ResultDisplay()
+    }
+    else {
+        operands.operand2 += char
+        highlightDisplay(selectedOperator)
+        operand2ResultDisplay()
+    }
+}
+
+const operand1ResultDisplay = () => {
+    result.innerText = operands.operand1
+}
+
+const operand2ResultDisplay = () => {
+    result.innerText = operands.operand2
+}
+
+const highlightDisplay = (selectedOperator) => {
+    operand1.innerText = operands.operand1
+    operand2.innerText = operands.operand2
+    operator.innerText = selectedOperator
 }
